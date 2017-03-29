@@ -1,4 +1,5 @@
-function hello(){
-  console.log('hello')
+class Liseen {
+  constructor(){
+    console.log('hello');
+  }
 }
-hello();

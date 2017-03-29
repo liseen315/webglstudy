@@ -1,4 +1,6 @@
-function hello() {
-    console.log('hello');
-}
-hello();
+var Liseen = (function () {
+    function Liseen() {
+        console.log('hello');
+    }
+    return Liseen;
+}());

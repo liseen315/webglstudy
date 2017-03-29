@@ -1,1 +1,3 @@
-declare function hello(): void;
+declare class Liseen {
+    constructor();
+}
