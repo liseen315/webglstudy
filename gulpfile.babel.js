@@ -12,6 +12,8 @@ const paths = {
   html: 'src/**/*.html'
 }
 
+const tsProject = typescript.createProject('./tsconfig.json');
+
 const cleanGlob = (glob) => {
   return () => {
     return gulp.src(glob, { read: false })
@@ -33,7 +35,8 @@ gulp.task('transpileTs',['clean-script'],()=>{
 })
 
 gulp.task('transpileHtml',['clean-html'],()=>{
-  
+  return gulp.src(paths.html)
+  .pipe(gulp.dest('./bin/'))
 })
 
 gulp.task('build',['transpileTs','transpileHtml'])
@@ -44,5 +47,5 @@ gulp.task('watch',['build'],()=>{
 })
 
 gulp.task('server',['watch'],()=>{
-
+  //启动服务器
 })
