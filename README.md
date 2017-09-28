@@ -1,2 +1,2 @@
-# webglstudy
-webgl study
+# 《WebGL权威指南》学习笔记
+#### 

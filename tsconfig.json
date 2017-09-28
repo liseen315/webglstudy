@@ -1,17 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "noImplicitAny": false,
-    "sourceMap": false,
+    "target": "es2015",
+    "noImplicitAny": true,
+    "sourceMap": true,
     "declaration": true,
-    "rootDir": "./src",
-    "outDir": "./bin",
     "allowUnreachableCode": true
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "bin"
   ]
 }
