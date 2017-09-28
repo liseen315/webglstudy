@@ -59,8 +59,11 @@ gulp.task('transpileTs',['clean-script'], () => {
       })
       .bundle()
       .pipe(source(entry))
-      .pipe(rename({extname:'.js'}))
-      .pipe(gulp.dest(file => { return path.resolve(__dirname,'./bin','../') }))
+      .pipe(rename(path => {
+        path.dirname = path.dirname.replace('src/','');
+        path.extname = '.js';
+      }))
+      .pipe(gulp.dest('./bin'))
     })
   })
 })
@@ -84,6 +87,6 @@ gulp.task('server',['watch'],()=>{
       console.log(err)
       return
     }
-    //open(uri)
+    open(uri)
   })
 })
