@@ -1,4 +1,4 @@
-# 《WebGL权威指南》学习笔记
+# 《WebGL编程指南》学习笔记
 WebGL权威指南typescript实现笔记,采用webpack多入口打包
 
 ## 目录说明
@@ -18,5 +18,8 @@ cd webglstudy
 npm install --registry=https://registry.npm.taobao.org
 npm run start
 ```
-# 学习参考链接
+# 学习笔记
+*	**笔记**: http://www.abianji.com/archives/category/webgl
+
+# 参考链接
 *	**openGL笔记**: http://blog.csdn.net/ziyuanxiazai123/article/category/2107037

@@ -63,6 +63,7 @@ const config = {
   },
   plugins: configPlugins,
   devServer: {
+    host: '127.0.0.1',
     contentBase: path.resolve(__dirname, 'dist'),
     port: 2017,
   },
