@@ -6,7 +6,7 @@ class CuonUtils {
    * @param vshader 
    * @param fshader 
    */
-  private static createProgram(gl: WebGLRenderingContext, vshader: string, fshader: string): WebGLProgram {
+  public static createProgram(gl: WebGLRenderingContext, vshader: string, fshader: string): WebGLProgram {
     let vertexShader: WebGLShader = CuonUtils.createShader(gl, gl.VERTEX_SHADER, vshader)
     let fragmentShader: WebGLShader = CuonUtils.createShader(gl, gl.FRAGMENT_SHADER, fshader)
     if (!vertexShader || !fragmentShader) {
@@ -68,6 +68,7 @@ class CuonUtils {
       return false
     }
     gl.useProgram(program)
+    
     return true
   }
 

@@ -4,11 +4,11 @@ function main(): void {
   let VSHADER_SOURCE: string =
     'void main() {\n' +
     '  gl_Position = vec4(0.0, 0.0, 0.0, 1.0);\n' +  //设置点坐标
-    '  gl_PointSize = 30.0;\n' +                    //设置点大小
+    '  gl_PointSize = 10.0;\n' +                    //设置点大小
     '}\n'
   let FSHADER_SOURCE: string =
     'void main() {\n' +
-    '  gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);\n' + //设置点颜色
+    '  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n' + //设置点颜色
     '}\n'
 
   let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('webgl')
