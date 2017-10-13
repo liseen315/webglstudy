@@ -43,10 +43,8 @@ function main(): void {
     let y: number = e.clientY
     let targetCanvas: HTMLCanvasElement = e.target as HTMLCanvasElement
     let rect: ClientRect = targetCanvas.getBoundingClientRect()
-    console.log(x, y, rect.left, rect.top)
-    //坐标换算也可以先成如下这样的. 因为webgl的Y轴跟canvas的Y轴正好相反.
-    x = ((x - rect.left) - canvas.width / 2) / (canvas.width / 2)
-    y = -((y - rect.top) - canvas.height / 2) / (canvas.height / 2)
+    x = ((x-rect.left)-targetCanvas.width/2)/(targetCanvas.width/2)
+    y = -((y-rect.top)- targetCanvas.height/2)/(targetCanvas.height/2)
     g_points.push([x, y])
     if (x >= 0.0 && y >= 0.0) {
       g_colors.push([1.0, 0.0, 0.0, 1.0])
@@ -65,6 +63,8 @@ function main(): void {
       gl.uniform4f(u_FragColor, rgba[0], rgba[1], rgba[2], rgba[3])
       gl.drawArrays(gl.POINTS, 0, 1)
     }
+
+    
   })
 
   gl.clearColor(0.0, 0.0, 0.0, 1.0)
