@@ -1,14 +1,12 @@
 import CuonUtils from '../lib/CuonUtils'
 import CommonUtils from '../lib/CommonUtils'
+
 function main(): void {
   let VSHADER_SOURCE: string =
     'attribute vec4 a_Position;\n' +
-    'uniform float u_CosB, u_SinB;\n' +
+    'uniform mat4 u_xformMatrix;\n' +
     'void main() {\n' +
-    '  gl_Position.x = a_Position.x * u_CosB - a_Position.y * u_SinB;\n' +
-    '  gl_Position.y = a_Position.x * u_SinB + a_Position.y * u_CosB;\n' +
-    '  gl_Position.z = a_Position.z;\n' +
-    '  gl_Position.w = 1.0;\n' +
+    '  gl_Position = u_xformMatrix * a_Position;\n' +
     '}\n';
   let FSHADER_SOURCE: string =
     'void main() {\n' +
@@ -25,20 +23,24 @@ function main(): void {
   gl.useProgram(program)
 
   let count: number = initVertexBuffers(gl, program, 'a_Position')
-  const ANGLE: number = 180.0
-  let radian:number = CommonUtils.angleToRadian(ANGLE)
-  let cosB:number = Math.cos(radian)
-  let sinB:number = Math.sin(radian)
+  let ANGLE: number = 90.0
+  let radian: number = CommonUtils.angleToRadian(ANGLE)
+  let cosB: number = Math.cos(radian)
+  let sinB: number = Math.sin(radian)
+  var xformMatrix = new Float32Array([
+    cosB, sinB, 0.0, 0.0,
+    -sinB, cosB, 0.0, 0.0,
+    0.0, 0.0, 1.0, 0.0,
+    0.0, 0.0, 0.0, 1.0
+  ])
 
-  let u_CosB:WebGLUniformLocation = gl.getUniformLocation(program,'u_CosB')
-  let u_SinB:WebGLUniformLocation = gl.getUniformLocation(program,'u_SinB')
-  if (!u_CosB || !u_SinB) {
-    console.log('Failed to get the storage location of u_CosB or u_SinB')
-    return
+  let u_xformMatrix:WebGLUniformLocation = gl.getUniformLocation(program,'u_xformMatrix')
+  if (!u_xformMatrix) {
+    console.log('Failed to get the storage location of u_xformMatrix')
+    return 
   }
 
-  gl.uniform1f(u_CosB,cosB)
-  gl.uniform1f(u_SinB,sinB)
+  gl.uniformMatrix4fv(u_xformMatrix,false,xformMatrix)
 
   gl.clearColor(0.0, 0.0, 0.0, 1.0)
   gl.clear(gl.COLOR_BUFFER_BIT)
