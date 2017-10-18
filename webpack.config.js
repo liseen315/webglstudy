@@ -53,7 +53,6 @@ const config = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
       },
       {
         test: /\.html$/,
@@ -68,7 +67,7 @@ const config = {
     port: 2017,
   },
   resolve: {
-    extensions: [ ".tsx", ".ts", ".js" ]
+    extensions: [ '.ts', '.tsx', ".js", ".json" ]
   },
 }
 

@@ -1,5 +1,6 @@
 import CuonUtils from '../lib/CuonUtils'
 import CommonUtils from '../lib/CommonUtils'
+import {glMatrix} from 'gl-matrix'
 
 function main(): void {
   let VSHADER_SOURCE: string =
@@ -21,7 +22,7 @@ function main(): void {
   }
   let program: WebGLProgram = CuonUtils.createProgram(gl, VSHADER_SOURCE, FSHADER_SOURCE)
   gl.useProgram(program)
-
+  console.log('-----',glMatrix.toRadian(90.0))
   let count: number = initVertexBuffers(gl, program, 'a_Position')
   var Sx:number = 1.0, Sy:number = 1.5, Sz:number = 1.0
   var xformMatrix:Float32Array = new Float32Array([
