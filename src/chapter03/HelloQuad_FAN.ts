@@ -24,12 +24,12 @@ function main(): void {
 
   gl.clearColor(0.0, 0.0, 0.0, 1.0)
   gl.clear(gl.COLOR_BUFFER_BIT)
-  gl.drawArrays(gl.TRIANGLES, 0, count)
+  gl.drawArrays(gl.TRIANGLE_FAN, 0, count)
 }
 
 function initVertexBuffers(gl: WebGLRenderingContext, program: WebGLProgram, name: string): number {
-  let vertices: Float32Array = new Float32Array([0.0, 0.5, -0.5, -0.5, 0.5, -0.5])
-  let count: number = 3
+  let vertices: Float32Array = new Float32Array([-0.5,0.5,-0.5,-0.5,0.5,0.5,0.5,-0.5])
+  let count: number = 4
   let vertexBuffer: WebGLBuffer = gl.createBuffer()
   if (!vertexBuffer) {
     console.log('Failed to create the buffer object')
