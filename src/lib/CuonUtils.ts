@@ -76,7 +76,7 @@ class CuonUtils {
    * 获取canvas 对象
    * @param canvas WebGLRenderingContext
    */
-  public static getWebGLContext(canvas: any): WebGLRenderingContext {
+  public static getWebGLContext(canvas: HTMLCanvasElement): WebGLRenderingContext {
     let gl: WebGLRenderingContext = WebGLUtils.setupWebGL(canvas)
     if (!gl) return null
     return gl

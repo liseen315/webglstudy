@@ -6,7 +6,8 @@ function main() {
   }
 
   let context: CanvasRenderingContext2D = canvas.getContext('2d')
-  context.fillStyle = 'rgba(255,255,0,1.0)';
+  context.clearRect(0,0,400,400);
+  context.fillStyle = 'rgba(255,255,0,1.0)';//red,green,blue,alpha
   context.fillRect(0, 0, 400, 400);
 }
 

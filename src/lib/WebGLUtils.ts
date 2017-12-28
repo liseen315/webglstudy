@@ -28,14 +28,14 @@ class WebGLUtils {
    * @param canvasAttribs 画布属性
    * @param onErroHandler 错误回调
    */
-  public static setupWebGL(canvas: any, canvasAttribs?: Canvas2DContextAttributes , onErroHandler?: Function): WebGLRenderingContext {
+  public static setupWebGL(canvas: HTMLCanvasElement, canvasAttribs?: Canvas2DContextAttributes , onErroHandler?: Function): WebGLRenderingContext {
     onErroHandler = onErroHandler || this.handleCreationError
     if (canvas.addEventListener) {
       canvas.addEventListener('webglcontextcreationerror', (event:any) => {
         onErroHandler(event.statusMessage)
       }, false)
     }
-    let context: WebGLRenderingContext = this.create3DContext(canvas, canvasAttribs)
+    let context: WebGLRenderingContext = this.create3DContext<WebGLRenderingContext>(canvas, canvasAttribs)
     if (!context) {
       onErroHandler('')
     }
@@ -43,12 +43,12 @@ class WebGLUtils {
   }
   /**
    * 创建3D上下文环境
-   * @param canvas 
-   * @param canvasAttribs 
+   * @param canvas 画布
+   * @param canvasAttribs 画布属性
    */
-  public static create3DContext(canvas: any, canvasAttribs?: Canvas2DContextAttributes): WebGLRenderingContext {
-    let names: Array<String> = ['webgl', 'experimental-webgl', 'webkit-3d', 'moz-webgl']
-    let context: WebGLRenderingContext = null
+  public static create3DContext<T>(canvas: HTMLCanvasElement, canvasAttribs?: Canvas2DContextAttributes): T {
+    let names: Array<String> = ['webgl', 'experimental-webgl', 'webkit-3d', 'moz-webgl','webgl2']
+    let context: any = null
     for (let i: number = 0; i < names.length; ++i) {
       try {
         context = canvas.getContext(names[i].toString(), canvasAttribs)
