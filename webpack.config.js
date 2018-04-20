@@ -41,7 +41,6 @@ entryHtml.forEach(function (v) {
 
 const config = {
   entry: entryJs,
-  devtool: '#eval-source-map',
   context: path.resolve(ROOT, 'src'),
   output: {
     filename: '[name].js?[chunkhash:8]',
@@ -63,6 +62,7 @@ const config = {
   plugins: configPlugins,
   devServer: {
     host: '127.0.0.1',
+    compress: true,
     contentBase: path.resolve(__dirname, 'dist'),
     port: 2017,
   },

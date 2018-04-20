@@ -2,7 +2,10 @@ class WebGLUtils {
   constructor() {
 
   }
-
+  /**
+   * 处理并创建错误消息
+   * @param msg error msg
+   */
   static handleCreationError(msg: string): void {
     let container = document.getElementsByTagName('body')[0]
     if (container) {
