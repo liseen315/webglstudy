@@ -1,7 +1,7 @@
 import CuonUtils from '../lib/CuonUtils'
 
 function main(): void {
-  let VSHADER_SOURCE: string =
+  let VSHADER_SOURCE: string = 
     'attribute vec4 a_position;\n' +
     'void main() {\n' +
     ' gl_Position = a_position;\n' +

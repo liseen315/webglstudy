@@ -37,7 +37,7 @@ class CuonUtils {
   }
 
   /**
-   * 创建shader对象实例
+   * 创建shader对象实例并进行编译
    * @param gl WebGLRenderingContext
    * @param type shader类型 VERTEX_SHADER 顶点类型 FRAGMENT_SHADER 片元类型
    * @param source 对应类型的源码
@@ -77,7 +77,7 @@ class CuonUtils {
   }
 
   /**
-   * 获取canvas 对象
+   * 获取webgl渲染上下文
    * @param canvas HTMLCanvasElement
    */
   public static getWebGLContext(canvas: HTMLCanvasElement): WebGLRenderingContext {

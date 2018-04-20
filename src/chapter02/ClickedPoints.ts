@@ -1,18 +1,19 @@
 import CuonUtils from '../lib/CuonUtils'
 
 function main(): void {
-  let VSHADER_SOURCE: string =
-    'attribute vec4 a_position;\n' +
-    'void main() {\n' +
-    ' gl_Position = a_position;\n' +
-    ' gl_PointSize = 10.0;\n' +
-    '}\n'
+  let VSHADER_SOURCE: string = `
+    attribute vec4 a_position;
+    void main() {
+      gl_Position = a_position;
+      gl_PointSize = 10.0;
+    }
+  `
 
-  let FSHADER_SOURCE: string =
-    'void main() {\n' +
-    '  gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);\n' +
-    '}\n'
-
+  let FSHADER_SOURCE: string = `
+    void main() {
+      gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
+    }
+  `
   let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('webgl')
   let gl: WebGLRenderingContext = CuonUtils.getWebGLContext(canvas)
   if (!gl) {

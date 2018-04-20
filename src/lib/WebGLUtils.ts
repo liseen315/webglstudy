@@ -31,10 +31,10 @@ class WebGLUtils {
    * @param canvasAttribs 画布属性
    * @param onErroHandler 错误回调
    */
-  public static setupWebGL(canvas: HTMLCanvasElement, canvasAttribs?: Canvas2DContextAttributes , onErroHandler?: Function): WebGLRenderingContext {
+  public static setupWebGL(canvas: HTMLCanvasElement, canvasAttribs?: Canvas2DContextAttributes, onErroHandler?: Function): WebGLRenderingContext {
     onErroHandler = onErroHandler || this.handleCreationError
     if (canvas.addEventListener) {
-      canvas.addEventListener('webglcontextcreationerror', (event:any) => {
+      canvas.addEventListener('webglcontextcreationerror', (event: any) => {
         onErroHandler(event.statusMessage)
       }, false)
     }
@@ -50,7 +50,7 @@ class WebGLUtils {
    * @param canvasAttribs 画布属性
    */
   public static create3DContext<T>(canvas: HTMLCanvasElement, canvasAttribs?: Canvas2DContextAttributes): T {
-    let names: Array<String> = ['webgl', 'experimental-webgl', 'webkit-3d', 'moz-webgl','webgl2']
+    let names: Array<String> = ['webgl', 'experimental-webgl', 'webkit-3d', 'moz-webgl', 'webgl2']
     let context: any = null
     for (let i: number = 0; i < names.length; ++i) {
       try {
